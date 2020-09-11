@@ -16,8 +16,11 @@ var x = 50;
 var y = 50;
 
 function canvasDraw() {
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  var img = new Image()
+  img.src = "dog.jpg"
+  ctx.drawImage(img, 0, 0);
+//   ctx.fillStyle = "black";
+//   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#f00";
   ctx.beginPath();
   ctx.arc(x, y, RADIUS, 0, degToRad(360), true);
