@@ -75,26 +75,26 @@ function startRecording() {
   console.log("Recording started");
 }
 
-function stopRecording() {
-	console.log("stopButton clicked");
+// function stopRecording() {
+// 	console.log("stopButton clicked");
 
-	//disable the stop button, enable the record too allow for new recordings
-	stopButton.disabled = true;
-	recordButton.disabled = false;
-	pauseButton.disabled = true;
+// 	//disable the stop button, enable the record too allow for new recordings
+// 	stopButton.disabled = true;
+// 	recordButton.disabled = false;
+// 	pauseButton.disabled = true;
 
-	//reset button just in case the recording is stopped while paused
-	pauseButton.innerHTML="Pause";
+// 	//reset button just in case the recording is stopped while paused
+// 	pauseButton.innerHTML="Pause";
 	
-	//tell the recorder to stop the recording
-	rec.stop();
+// 	//tell the recorder to stop the recording
+// 	rec.stop();
 
-	//stop microphone access
-	gumStream.getAudioTracks()[0].stop();
+// 	//stop microphone access
+// 	gumStream.getAudioTracks()[0].stop();
 
-	//create the wav blob and pass it on to createDownloadLink
-	rec.exportWAV(createDownloadLink);
-}
+// 	//create the wav blob and pass it on to createDownloadLink
+// 	rec.exportWAV(createDownloadLink);
+// }
 
 
 function stopRecording() {
@@ -124,7 +124,13 @@ function createDownloadLink(blob) {
 	var url = URL.createObjectURL(blob);
 	var au = document.createElement('audio');
 	var li = document.createElement('li');
-	var link = document.createElement('a');
+  var link = document.createElement('a');
+  var text = document.createElement('textBox')
+  // text.setAttribute('id', 'div_' + intTextBox);
+  // text.innerHTML = 'Textbox ' + intTextBox + 
+  // ': <input type="text" id="tb_' + intTextBox + '" name="tb_' + intTextBox + '"/>';
+
+  // document.getElementById('userText').appendChild(text);
 
 	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString();
