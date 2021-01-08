@@ -114,6 +114,8 @@ function stopRecording() {
 	//stop microphone access
 	gumStream.getAudioTracks()[0].stop();
 
+  console.log("right before calling createDownloadLink")
+
 	//create the wav blob and pass it on to createDownloadLink
 	rec.exportWAV(createDownloadLink);
 }
@@ -125,12 +127,25 @@ function createDownloadLink(blob) {
 	var au = document.createElement('audio');
 	var li = document.createElement('li');
   var link = document.createElement('a');
-  var text = document.createElement('textBox')
+  // var textField = document.createElement('textBox');
   // text.setAttribute('id', 'div_' + intTextBox);
   // text.innerHTML = 'Textbox ' + intTextBox + 
   // ': <input type="text" id="tb_' + intTextBox + '" name="tb_' + intTextBox + '"/>';
+  // text.type = "text";
+  // textField.setAttribute('type', 'text');
+  // textField.setAttribute("value", "Hello World!");
 
-  // document.getElementById('userText').appendChild(text);
+  // document.getElementById('userText').appendChild(textField);
+  // document.body.appendChild(textField);
+
+  console.log("In create download link")
+
+
+  var textField = document.createElement("INPUT");
+  textField.setAttribute("type", "text");
+  textField.setAttribute("value", "Please transcribe the audio.");
+  // document.body.appendChild(textField);
+  document.getElementById('userText').appendChild(textField);
 
 	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString();
@@ -140,9 +155,9 @@ function createDownloadLink(blob) {
 	au.src = url;
 
 	//save to disk link
-	link.href = url;
-	link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-	link.innerHTML = "Save to disk";
+	// link.href = url;
+	// link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
+	// link.innerHTML = "Save to disk";
 
 	//add the new audio element to li
 	li.appendChild(au);
@@ -167,7 +182,7 @@ function createDownloadLink(blob) {
       var fd=new FormData();
       // newBlob = new Blob([image.src, coordJSON, blob])
       fd.append("audioData", blob, filename + ".wav");
-      const imageSrcBlob = new Blob([image.src], {type : 'text/plain'});
+      const imageSrcBlob = new Blob([image.src + "\n" + textField.value], {type : 'text/plain'});
       fd.append("imageSrc", imageSrcBlob, "imageSrc.txt");
       coordJSON = JSON.stringify(coordinates);
       coordBlob = new Blob([coordJSON], {type: "application/json"});

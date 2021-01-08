@@ -38,15 +38,20 @@ def sendImage(imageId):
 
 @app.route("/", methods=["POST"])
 def uploadFiles():
+    uniqueName = ""
     names = ["audioData", "imageSrc", "coordJSON"]
     for name in names:
         uploadedFile = request.files[name]
         filename = secure_filename(uploadedFile.filename)
-        print("filename", filename, "uploadedFile.filename", uploadedFile.filename)
+        if uniqueName == "":
+            uniqueName = filename
+        # print("filename", filename, "uploadedFile.filename", uploadedFile.filename)
         if filename != '':
             fileExt = os.path.splitext(filename)[1]
             if fileExt not in app.config['UPLOAD_EXTENSIONS']:
                 abort(400)
+            if name != "audioData":
+                filename = uniqueName + filename
             uploadedFile.save(os.path.join(app.config['UPLOAD_PATH'], filename))
         # f = open('./file.wav', 'wb')
         # f.write(request.data)

@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Pointer lock demo</title>
-  <link type="text/css" rel="stylesheet" href="style.css">
+  <!-- <link type="text/css" rel="stylesheet" href="style.css"> -->
   <link rel = "stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
 </head>
 <body>
   <div class="information">
-    <h1>Pointer lock demo</h1>
+    <h1>Multimodal Annotations</h1>
 
-    <p>This demo demonstrates usage of the pointer lock API. Click on the canvas area and your mouse will directly control the ball inside the canvas, not your mouse pointer. You can press escape to return to the standard expected state.</p>
+    <p>Click on the canvas area and your mouse will directly control the ball inside the canvas, not your mouse pointer. You can press escape to return to the standard expected state.</p>
   </div>
 
   <!-- <img id="dog" width="640" height="480" src="dog.jpg" alt="dog image"> -->
@@ -26,10 +26,12 @@
   </canvas> -->
   <div id="tracker"></div>
 
+  <div id="userText"></div>
+
   <p><strong>Recordings:</strong></p>
   <ol id="recordingsList"></ol>
 
-  <div id="userText"></div>
+
 
 
   <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
