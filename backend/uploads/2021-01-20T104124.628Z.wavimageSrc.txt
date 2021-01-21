@@ -1,0 +1,2 @@
+http://127.0.0.1:5000/static/images/dog.jpg
+Look, here we can see a dog looking at an old tv. And there is a thing here.

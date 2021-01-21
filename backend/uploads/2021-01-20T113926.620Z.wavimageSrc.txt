@@ -1,0 +1,2 @@
+http://127.0.0.1:5000/static/images/000000001584.jpg
+Here we see a red double decker bus. Theres 2 floors. This is the first floor. This is the second floor. In the background there is a building here and another building here.

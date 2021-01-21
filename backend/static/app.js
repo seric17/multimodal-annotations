@@ -266,11 +266,15 @@ function lockChangeAlert() {
       document.mozPointerLockElement === canvas) {
     console.log('The pointer lock status is now locked');
     startRecording()
+    coordTimer = setInterval(updateCoordinates, 100);
+    console.log("coordTimer" + coordTimer);
     document.addEventListener("mousemove", updatePosition, false);
   } else {
     console.log('The pointer lock status is now unlocked');
     stopRecording()  
     document.removeEventListener("mousemove", updatePosition, false);
+    console.log("coord " + coordTimer)
+    clearInterval(coordTimer);
   }
 }
 
@@ -278,6 +282,11 @@ var tracker = document.getElementById('tracker');
 // var history = document.getElementById('history');
 
 var coordinates = [];
+
+function updateCoordinates() {
+  coordinates.push([x, y, Date.now()]);
+  console.log(coordinates[coordinates.length - 1])
+}
 
 var animation;
 function updatePosition(e) {
@@ -296,8 +305,8 @@ function updatePosition(e) {
     y = canvas.height + RADIUS;
   }
   tracker.textContent = "X position: " + x + ", Y position: " + y + " time: " + Date.now();
-  coordinates.push([x, y, Date.now()]);
-  console.log(coordinates[coordinates.length - 1])
+  // coordinates.push([x, y, Date.now()]);
+  // console.log(coordinates[coordinates.length - 1])
   
   if (!animation) {
   animation = requestAnimationFrame(function() {
