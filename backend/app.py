@@ -9,7 +9,7 @@ app.config['UPLOAD_PATH'] = 'uploads'
 
 @app.route("/")
 def home():
-    return render_template("index.html", fileName = "images/dog.jpg")
+    return render_template("index.html", fileName = "images/bus.jpg")
 
 @app.route("/images/<imageId>")
 def sendImage(imageId):
