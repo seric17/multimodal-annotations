@@ -4,7 +4,7 @@ from flask import Flask, render_template, send_file, request, abort, request, re
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 10240 * 10240
-app.config['UPLOAD_EXTENSIONS'] = ['.wav', '.json', '.txt']
+app.config['UPLOAD_EXTENSIONS'] = ['.webm', '.json', '.txt']
 app.config['UPLOAD_PATH'] = 'uploads'
 
 @app.route("/")

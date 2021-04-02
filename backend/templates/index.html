@@ -7,34 +7,40 @@
   <link rel = "stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
 </head>
 <body>
-  <div class="information">
-    <h1>Multimodal Annotations</h1>
+  <main>
+    <div class="information">
+      <h1>Multimodal Annotations</h1>
+  
+      <p>Click on the canvas area and your mouse will directly control the ball inside the canvas, not your mouse pointer. You can press escape to return to the standard expected state.</p>
+    </div>
+  
+    <!-- <img id="dog" width="640" height="480" src="dog.jpg" alt="dog image"> -->
+  
+    <!-- <script>
+      var image = "{{url_for('static', filename = 'dog.jpg')}}";
+      console.log("in html script", image.width)
+    </script> -->
+    <img id="curImage" src="{{url_for('static', filename = fileName)}}" alt="">
+  
+    <!-- <canvas width="640" height="480">
+      Your browser does not support HTML5 canvas
+    </canvas> -->
+    <div id="tracker"></div>
+  
+    <div id="userText"></div>
+  
+    <div id="result"></div>
+  
+    <ul id="recordings"></ul>
+  
+    <p><strong>Recordings:</strong></p>
+    <ol id="recordingsList"></ol>
+  
+  
+  
+  
+    <script src="{{ url_for('static', filename='appV2.js') }}"></script>
+  </main>
 
-    <p>Click on the canvas area and your mouse will directly control the ball inside the canvas, not your mouse pointer. You can press escape to return to the standard expected state.</p>
-  </div>
-
-  <!-- <img id="dog" width="640" height="480" src="dog.jpg" alt="dog image"> -->
-
-  <!-- <script>
-    var image = "{{url_for('static', filename = 'dog.jpg')}}";
-    console.log("in html script", image.width)
-  </script> -->
-  <img id="curImage" src="{{url_for('static', filename = fileName)}}" alt="">
-
-  <!-- <canvas width="640" height="480">
-    Your browser does not support HTML5 canvas
-  </canvas> -->
-  <div id="tracker"></div>
-
-  <div id="userText"></div>
-
-  <p><strong>Recordings:</strong></p>
-  <ol id="recordingsList"></ol>
-
-
-
-
-  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-  <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

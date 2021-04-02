@@ -17,12 +17,12 @@ np.random.seed(19680801)
 
 # Set up formatting for the movie files
 Writer = animation.writers['ffmpeg']
-writer = Writer(fps=10, metadata=dict(artist='Me'), bitrate=1800)
+writer = Writer(fps=66, metadata=dict(artist='Me'), bitrate=1800)
 
 numTimestamps = 0
 coords = []
 
-with open('2021-01-21T154637.995Z.wavcoord.json') as f:
+with open('2021-03-05T104338.802Z.wavcoord.json') as f:
   data = json.load(f)
   numTimeStamps = len(data)
   for x, y, _ in data:
@@ -49,5 +49,5 @@ def animate(i):
     graph.set_data(x[i], y[i])
     return graph
 
-ani = FuncAnimation(fig, animate, frames = numTimeStamps, interval=100)
+ani = FuncAnimation(fig, animate, frames = numTimeStamps, interval=15)
 ani.save('ani.mp4', writer=writer)
